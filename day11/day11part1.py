@@ -1,0 +1,80 @@
+# monkeys = {}
+# details = {}
+# details = []
+# with open('./day11/day11test.txt', 'r') as f:
+#     for l in f:
+#         l = l.strip()
+#         if l == '':
+#             monkeys.append(details); details = []
+#         else:
+#             details.append(l)
+monkeys = {
+                0: {'items': [89, 73, 66, 57, 64, 80],          True: 6, False: 2, 'inspects': 0},
+                1: {'items': [83, 78, 81, 55, 81, 59, 69],      True: 7, False: 4, 'inspects': 0},
+                2: {'items': [76, 91, 58, 85],                  True: 1, False: 4, 'inspects': 0},
+                3: {'items': [71, 72, 74, 76, 68],              True: 6, False: 0, 'inspects': 0},
+                4: {'items': [98, 85, 84],                      True: 5, False: 7, 'inspects': 0},
+                5: {'items': [78],                              True: 3, False: 0, 'inspects': 0},
+                6: {'items': [86, 70, 60, 88, 88, 78, 74, 83],  True: 1, False: 2, 'inspects': 0},
+                7: {'items': [81, 58],                          True: 3, False: 5, 'inspects': 0}
+          }
+#         if l == '': 
+#             monkeys[monkey] = details; details = {}
+#             continue
+#         if l.split()[0] == "Monkey": 
+#             monkey = f'monkey{l.split()[1][:-1:]}'
+#             continue
+#         if l.split()[0] == "Starting": 
+#             details['items'] =[ int(i.strip()) for i in l.split(':')[1].strip().split(',') ]
+#             continue
+#         if l.split()[0] == "Operation:":
+#             details['operation'] = l.split()[-2::]
+#             continue
+#         if l.split()[0] == "Test:":
+#             details['test'] = [l.split()[1], int(l.split()[3])]
+
+# def worry(input, monkey):
+#     if monkey == 0: return input * 19
+#     if monkey == 1: return input + 6
+#     if monkey == 2: return input * input
+#     if monkey == 3: return input + 3
+# def test(input, monkey):
+#     if monkey == 0: return input % 23 == 0
+#     if monkey == 1: return input % 19 == 0
+#     if monkey == 2: return input % 13 == 0
+#     if monkey == 3: return input % 17 == 0
+def worry(input, monkey):
+    if monkey == 0: return input * 3
+    if monkey == 1: return input + 1
+    if monkey == 2: return input * 13
+    if monkey == 3: return input * input
+    if monkey == 4: return input + 7
+    if monkey == 5: return input + 8
+    if monkey == 6: return input + 4
+    if monkey == 7: return input + 5
+def test(input, monkey):
+    if monkey == 0: return input % 13 == 0
+    if monkey == 1: return input % 3 == 0
+    if monkey == 2: return input % 7 == 0
+    if monkey == 3: return input % 2 == 0
+    if monkey == 4: return input % 19 == 0
+    if monkey == 5: return input % 5 == 0
+    if monkey == 6: return input % 11 == 0
+    if monkey == 7: return input % 17 == 0
+def throw(input, monkey):
+    monkeys[monkey]['items'].append(input)
+
+for i in range(10000):
+    print(f'{i}/10000', end='\r')
+    for monkey in monkeys:
+        for _ in range(len(monkeys[monkey]['items'])):
+            item = monkeys[monkey]['items'].pop(0)
+            monkeys[monkey]['inspects'] += 1
+            newitem = worry(item, monkey) % 9_699_690
+            recipient = monkeys[monkey][test(newitem, monkey)]
+            throw(newitem, recipient)
+
+output = [i['inspects'] for i in monkeys.values()]
+output.sort()
+print(output)
+print(output[-1] * output[-2])
