@@ -1,5 +1,7 @@
 # Global Ignores
 
+inputs/*
+
 # Windows
 Thumbs.db
 Thumbs.db:encryptable
