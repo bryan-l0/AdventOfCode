@@ -1,7 +1,9 @@
-## AoC2022
+## Advent of Code 2023
 
-These are my solutions to the 2022 Advent of Code, mostly written in Python, relatively unchanged from the first version. 
+The goal for this year is to do the problems in C++ 20, to get more experience working with the language.
+
+## Advent of Code 2022
+
+Solutions mostly written in Python, relatively unchanged from the first version. 
 
 I have gone through them to make them more readable, but they should be close to the original implementation.
-
-Managed to do up to day 18 this year before being swamped by coursework :)
