@@ -1,4 +1,4 @@
-#include "adventofcode.cpp"
+#include "adventofcode.h"
 
 int day1solution(vector<string> input, regex re, regex rev)
 {

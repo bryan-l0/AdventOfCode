@@ -15,7 +15,6 @@
 using namespace std;
 
 vector<string> readInput(string fileName);
-
 vector<string_view> splitToVector(string_view input, string token);
 unordered_set<string_view> splitToSet(string_view input, string_view token);
 string_view lstrip(string_view input, string_view token);
